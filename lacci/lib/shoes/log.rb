@@ -56,7 +56,7 @@ class Shoes
     end
 
     def method_missing(method, ...)
-      self.singleton_class.define_method(method) do |*args, **kwargs, &block|
+      singleton_class.define_method(method) do |*args, **kwargs, &block|
         ret = @instance.send(method, *args, **kwargs, &block)
         @log.info("Method: #{method} Args: #{args.inspect} KWargs: #{kwargs.inspect} Block: #{block ? "y" : "n"} Return: #{ret.inspect}")
         ret

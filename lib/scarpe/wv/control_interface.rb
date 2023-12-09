@@ -53,7 +53,7 @@ module Scarpe::Webview
 
       @wrangler.control_interface = self
 
-      @wrangler.on_every_redraw { self.dispatch_event(:redraw) }
+      @wrangler.on_every_redraw { dispatch_event(:redraw) }
     end
 
     def app

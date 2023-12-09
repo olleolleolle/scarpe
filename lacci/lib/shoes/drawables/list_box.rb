@@ -33,8 +33,8 @@ class Shoes
     # @param item [String] the item to choose
     # @return [void]
     def choose(item)
-      unless self.items.include?(item)
-        raise Shoes::Errors::NoSuchListItemError, "List items (#{self.items.inspect}) do not contain item #{item.inspect}!"
+      unless items.include?(item)
+        raise Shoes::Errors::NoSuchListItemError, "List items (#{items.inspect}) do not contain item #{item.inspect}!"
       end
 
       @chosen = item

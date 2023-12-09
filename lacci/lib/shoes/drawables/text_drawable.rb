@@ -38,11 +38,11 @@ class Shoes
         end
 
         def text
-          self.content
+          content
         end
 
         def to_s
-          self.content
+          content
         end
 
         def text=(new_text)

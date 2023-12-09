@@ -50,7 +50,7 @@ module Scarpe::Test::LoggedTest
   end
 
   def file_id
-    "#{self.class.name}_#{self.name}"
+    "#{self.class.name}_#{name}"
   end
 
   # This should be called by the test during setup to make sure that
@@ -67,7 +67,7 @@ module Scarpe::Test::LoggedTest
     @normal_log_config = Shoes::Log.current_log_config
     Shoes::Log.configure_logger(log_config_for_test)
 
-    Shoes::Log.logger("LoggedScarpeTest").info("Test: #{self.class.name}##{self.name}")
+    Shoes::Log.logger("LoggedScarpeTest").info("Test: #{self.class.name}##{name}")
   end
 
   # If you include this module and don't override setup/teardown, everything will
@@ -90,7 +90,7 @@ module Scarpe::Test::LoggedTest
     # Restore previous log config
     Shoes::Log.configure_logger(@normal_log_config)
 
-    if self.failure
+    if failure
       save_failure_logs
     else
       remove_unsaved_logs

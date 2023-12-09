@@ -178,7 +178,7 @@ class Shoes
     end
 
     def send_self_event(*args, event_name:, **kwargs)
-      DisplayService.dispatch_event(event_name, self.linkable_id, *args, **kwargs)
+      DisplayService.dispatch_event(event_name, linkable_id, *args, **kwargs)
     end
 
     def send_shoes_event(*args, event_name:, target: nil, **kwargs)

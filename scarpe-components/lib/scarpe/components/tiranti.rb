@@ -190,8 +190,7 @@ module Scarpe::Components::Tiranti
   }.freeze
 
   def para_elt_and_opts(props)
-    elt, size = para_elt_and_size(props)
-    size = dimensions_length(size)
+    elt = para_elt_and_size(props)[0]
 
     para_style = drawable_style(props).merge({
       color: rgb_to_hex(props["stroke"]),

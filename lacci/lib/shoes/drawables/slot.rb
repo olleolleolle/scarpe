@@ -80,7 +80,7 @@ class Shoes::Slot < Shoes::Drawable
   # @return [void]
   def append(&block)
     raise(Shoes::Errors::InvalidAttributeValueError, "append requires a block!") unless block_given?
-    raise(Shoes::Errors::InvalidAttributeValueError, "Don't append to something that isn't a slot!") unless self.is_a?(Shoes::Slot)
+    raise(Shoes::Errors::InvalidAttributeValueError, "Don't append to something that isn't a slot!") unless is_a?(Shoes::Slot)
 
     Shoes::App.instance.with_slot(self, &block)
   end

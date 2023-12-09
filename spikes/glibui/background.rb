@@ -7,7 +7,7 @@ class Scarpe
       return styles unless @background_color
 
       color = if @background_color.is_a?(Range)
-        "linear-gradient(45deg, #{@background_color.first}, #{@background_color.last})"
+                "linear-gradient(45deg, #{@background_color.first}, #{@background_color.last})"
       else
         @background_color
       end

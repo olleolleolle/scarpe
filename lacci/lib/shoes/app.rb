@@ -95,7 +95,7 @@ class Shoes
       @watch_for_destroy = bind_shoes_event(event_name: "destroy") do
         Shoes::DisplayService.unsub_from_events(@watch_for_destroy) if @watch_for_destroy
         @watch_for_destroy = nil
-        self.destroy(send_event: false)
+        destroy(send_event: false)
       end
 
       @watch_for_event_loop = bind_shoes_event(event_name: "custom_event_loop") do |loop_type|
@@ -241,7 +241,7 @@ class Shoes
             end
           when "@"
             if Shoes::App.instance.instance_variables.include?(spec.to_sym)
-              drawables &= [self.instance_variable_get(spec)]
+              drawables &= [instance_variable_get(spec)]
             else
               raise Shoes::Errors::InvalidAttributeValueError, "Can't find top-level instance variable: #{spec.inspect}!"
             end

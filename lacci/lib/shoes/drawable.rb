@@ -79,7 +79,7 @@ class Shoes
       # @param args [Array] an array of event names, which will be coerced to Strings
       # @return [void]
       def shoes_events(*args)
-        @shoes_events ||= args.map(&:to_s) + self.superclass.get_shoes_events
+        @shoes_events ||= args.map(&:to_s) + superclass.get_shoes_events
       end
 
       # Require supplying these Shoes style values as positional arguments to
@@ -205,7 +205,7 @@ class Shoes
       def shoes_style_names(with_features: nil)
         # No with_features given? Use the ones requested by this Shoes::App
         with_features ||= Shoes::App.instance.features
-        parent_prop_names = self != Shoes::Drawable ? self.superclass.shoes_style_names(with_features:) : []
+        parent_prop_names = self != Shoes::Drawable ? superclass.shoes_style_names(with_features:) : []
 
         if with_features == :all
           subclass_props = linkable_properties
@@ -216,7 +216,7 @@ class Shoes
       end
 
       def shoes_style_hashes
-        parent_hashes = self != Shoes::Drawable ? self.superclass.shoes_style_hashes : []
+        parent_hashes = self != Shoes::Drawable ? superclass.shoes_style_hashes : []
 
         parent_hashes + linkable_properties
       end
@@ -264,7 +264,7 @@ class Shoes
           raise Shoes::Errors::BadArgumentListError, "Too many arguments given for #{self.class}#initialize! #{args.inspect}"
         end
 
-        if args.size == 0
+        if args.empty?
           # It's fine to use keyword args instead, but we should make sure they're actually there
           needed_args = req_args.map(&:to_sym) - kwargs.keys
           unless needed_args.empty?
@@ -312,7 +312,7 @@ class Shoes
       end
 
       super(linkable_id: Shoes::Drawable.allocate_drawable_id)
-      Shoes::Drawable.register_drawable_id(self.linkable_id, self)
+      Shoes::Drawable.register_drawable_id(linkable_id, self)
 
       generate_debug_id
     end
@@ -357,7 +357,7 @@ class Shoes
 
     def validate_event_name(event_name)
       unless self.class.get_shoes_events.include?(event_name.to_s)
-        raise Shoes::UnregisteredShoesEvent, "Drawable #{self.inspect} tried to bind Shoes event #{event_name}, which is not in #{evetns.inspect}!"
+        raise Shoes::UnregisteredShoesEvent, "Drawable #{inspect} tried to bind Shoes event #{event_name}, which is not in #{evetns.inspect}!"
       end
     end
 
@@ -390,7 +390,7 @@ class Shoes
       all_property_names.each do |prop|
         properties[prop] = instance_variable_get("@" + prop)
       end
-      properties["shoes_linkable_id"] = self.linkable_id
+      properties["shoes_linkable_id"] = linkable_id
       properties
     end
 
@@ -428,7 +428,7 @@ class Shoes
 
       # Should we send an event so this can be discovered from someplace other than
       # the DisplayService?
-      ::Shoes::DisplayService.display_service.create_display_drawable_for(klass_name, self.linkable_id, shoes_style_values, is_widget:)
+      ::Shoes::DisplayService.display_service.create_display_drawable_for(klass_name, linkable_id, shoes_style_values, is_widget:)
     end
 
     public
@@ -466,7 +466,7 @@ class Shoes
 
     # Hide the drawable if it is currently shown. Show it if it is currently hidden.
     def toggle
-      self.hidden = !self.hidden
+      self.hidden = !hidden
     end
 
     # We use method_missing to auto-create Shoes style getters and setters.
@@ -484,7 +484,7 @@ class Shoes
             send_shoes_event({ prop_name => new_value }, event_name: "prop_change", target: linkable_id)
           end
 
-          return self.send(name, *args, **kwargs, &block)
+          return send(name, *args, **kwargs, &block)
         end
       end
 
@@ -495,7 +495,7 @@ class Shoes
           instance_variable_get("@" + name_s)
         end
 
-        return self.send(name, *args, **kwargs, &block)
+        return send(name, *args, **kwargs, &block)
       end
 
       super(name, *args, **kwargs, &block)

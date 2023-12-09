@@ -1,94 +1,118 @@
-inherit_gem:
-  rubocop-shopify: rubocop.yml
-
 AllCops:
   TargetRubyVersion: 3.2
   SuggestExtensions: false
+  DisabledByDefault: true
   Exclude:
     - 'bin/**/*'
     - 'exe/**/*'
-    # - 'examples/**/*' Since I'm only doing this locally.
+    - 'examples/**/*'
     - 'docs/**/*'
-
-Layout/LineLength:
-  Max: 150
-
-Style/RedundantHeredocDelimiterQuotes:
-  Enabled: false
-
-Style/MissingRespondToMissing:
-  Enabled: false
-
-Metrics/ParameterLists:
-  Enabled: false
-
-Style/ParallelAssignment:
-  Enabled: false
-
-
 
 Style/MethodCallWithArgsParentheses:
   Enabled: false
 
-Style/GlobalVars:
-  Enabled: false
+Lint/UselessAssignment:
+  Enabled: true
 
-Style/CommandLiteral:
-  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: true
 
-Security/Eval:
-  Enabled: false
+# Prefer .empty? to size == 0
+Style/ZeroLengthPredicate:
+  Enabled: true
 
-Style/LineEndConcatenation:
-  Enabled: false
+# Catches when we've goofed up indentation
+Layout/IndentationWidth:
+  Enabled: true
 
-Style/ClassVars:
-  Enabled: false
+# Unneeded blank lines
+Layout/EmptyLines:
+  Enabled: true
 
-Naming/AccessorMethodName:
-  Enabled: false
-
+# If we don't need self in this case
 Style/RedundantSelf:
-  Enabled: false
+  Enabled: true
 
-Style/ClassMethodsDefinitions:
-  Enabled: false
+# OLD SETTINGS #
+# Layout/LineLength:
+#   Max: 150
 
-Style/SpecialGlobalVars:
-  Enabled: false
+# Style/RedundantHeredocDelimiterQuotes:
+#   Enabled: false
 
-Style/CaseEquality:
-  Enabled: false
+# Style/MissingRespondToMissing:
+#   Enabled: false
 
-Style/RedundantConstantBase:
-  Enabled: false
+# Metrics/ParameterLists:
+#   Enabled: false
 
-Style/EmptyElse:
-  Enabled: false
+# Style/ParallelAssignment:
+#   Enabled: false
 
-Metrics/BlockNesting:
-  Enabled: false
 
-Layout/EmptyLinesAroundExceptionHandlingKeywords:
-  Enabled: false
 
-Style/RedundantBegin:
-  Enabled: false
+# Style/MethodCallWithArgsParentheses:
+#   Enabled: false
 
-Layout/LeadingCommentSpace:
-  Enabled: false
+# Style/GlobalVars:
+#   Enabled: false
 
-Style/FormatString:
-  Enabled: false
+# Style/CommandLiteral:
+#   Enabled: false
 
-Style/RegexpLiteral:
-  Enabled: false
+# Security/Eval:
+#   Enabled: false
 
-Style/ReturnNil:
-  Enabled: false
+# Style/LineEndConcatenation:
+#   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Enabled: false
+# Style/ClassVars:
+#   Enabled: false
 
-Layout/EmptyLineBetweenDefs:
-  Enabled: false
+# Naming/AccessorMethodName:
+#   Enabled: false
+
+# Style/RedundantSelf:
+#   Enabled: false
+
+# Style/ClassMethodsDefinitions:
+#   Enabled: false
+
+# Style/SpecialGlobalVars:
+#   Enabled: false
+
+# Style/CaseEquality:
+#   Enabled: false
+
+# Style/RedundantConstantBase:
+#   Enabled: false
+
+# Style/EmptyElse:
+#   Enabled: false
+
+# Metrics/BlockNesting:
+#   Enabled: false
+
+# Layout/EmptyLinesAroundExceptionHandlingKeywords:
+#   Enabled: false
+
+# Style/RedundantBegin:
+#   Enabled: false
+
+# Layout/LeadingCommentSpace:
+#   Enabled: false
+
+# Style/FormatString:
+#   Enabled: false
+
+# Style/RegexpLiteral:
+#   Enabled: false
+
+# Style/ReturnNil:
+#   Enabled: false
+
+# Style/ClassAndModuleChildren:
+#   Enabled: false
+
+# Layout/EmptyLineBetweenDefs:
+#   Enabled: false

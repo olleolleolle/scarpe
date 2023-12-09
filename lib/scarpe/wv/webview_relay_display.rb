@@ -49,7 +49,7 @@ module Scarpe
       rescue Scarpe::AppShutdownError
         @shutdown = true
         @log.info("Attempting to shut down...")
-        self.destroy
+        destroy
       end
     end
 
@@ -62,7 +62,7 @@ module Scarpe
     rescue Scarpe::AppShutdownError
       @shutdown = true
       @log.info("Attempting to shut down...")
-      self.destroy
+      destroy
     end
 
     # This method sends a message to the worker process to create a drawable. No actual

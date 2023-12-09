@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Niente
   class Drawable < Shoes::Linkable
     attr_reader :shoes_linkable_id

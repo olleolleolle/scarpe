@@ -119,7 +119,7 @@ module Scarpe::Webview
 
     # A shorter inspect text for prettier irb output
     def inspect
-      "#<#{self.class}:#{self.object_id} @shoes_linkable_id=#{@shoes_linkable_id} @children=#{@children.inspect}>"
+      "#<#{self.class}:#{object_id} @shoes_linkable_id=#{@shoes_linkable_id} @children=#{@children.inspect}>"
     end
 
     protected

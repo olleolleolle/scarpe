@@ -114,7 +114,7 @@ class ScarpeWebviewTest < Minitest::Test
         threshold = data["die_after"]["threshold"]
         passed = data["die_after"]["passed"]
         if passed / threshold > TIMEOUT_FRACTION_OF_THRESHOLD
-          test_name = "#{self.class.name}_#{self.name}"
+          test_name = "#{self.class.name}_#{name}"
 
           SET_UP_TIMEOUT_CHECKS[:near_timeout] << [test_name, "%.2f%%" % (passed / threshold * 100.0)]
         end
@@ -204,7 +204,7 @@ class ShoesSpecLoggedTest < Minitest::Test
     sspec_file = File.expand_path(File.join __dir__, "sspec.json")
     File.unlink sspec_file rescue nil
 
-    test_method_name = self.name
+    test_method_name = name
     test_class_name = self.class.name
 
     with_tempfiles([

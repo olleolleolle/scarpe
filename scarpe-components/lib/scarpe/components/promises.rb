@@ -349,7 +349,7 @@ module Scarpe
       @waiting_on.delete(parent)
 
       # Last parent? If so, schedule ourselves.
-      if @waiting_on.empty? && !self.complete?
+      if @waiting_on.empty? && !complete?
         # This will result in :pending if there's no executor,
         # or fulfilled/rejected if there is an executor.
         set_state(:pending)
@@ -359,7 +359,7 @@ module Scarpe
     def parent_rejected!(parent)
       @waiting_on = []
 
-      unless self.complete?
+      unless complete?
         # If our parent was rejected and we were waiting on them,
         # now we're rejected too.
         set_state(:rejected)

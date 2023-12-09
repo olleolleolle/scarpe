@@ -34,7 +34,7 @@ class NienteTest < Minitest::Test
     app_test_code: "",
     timeout: 5.0,
     class_name: self.class,
-    method_name: self.name,
+    method_name: name,
     expect_process_fail: false,
     display_service: "niente"
   )

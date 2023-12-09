@@ -76,7 +76,7 @@ class Shoes
     end
 
     def to_s
-      self.text
+      text
     end
 
     private

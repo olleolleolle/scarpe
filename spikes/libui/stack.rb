@@ -6,7 +6,7 @@ class Object
   end
 
   def all_callers
-    caller.map { |x| x.match(/`(.*)'/)[1] if self.respond_to? x.match(/`(.*)'/)[1].to_sym }.compact
+    caller.map { |x| x.match(/`(.*)'/)[1] if respond_to? x.match(/`(.*)'/)[1].to_sym }.compact
   end
 
   def caller_key

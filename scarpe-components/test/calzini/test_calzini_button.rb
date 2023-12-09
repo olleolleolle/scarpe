@@ -11,9 +11,9 @@ class TestCalziniButton < Minitest::Test
     assert_equal %{<button id="elt-1" onclick="handle('click')" onmouseover="handle('hover')"></button>}, @calzini.render("button", {})
   end
 
- def test_button_with_html_class
+  def test_button_with_html_class
     assert_equal %{<button id="elt-1" onclick="handle('click')" onmouseover="handle('hover')" class="buttonish"></button>}, @calzini.render("button", { "html_class" => "buttonish" })
-  end
+   end
 
   def test_button_all_standard_properties_set
     props = {

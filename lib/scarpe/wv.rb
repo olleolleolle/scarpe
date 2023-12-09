@@ -31,7 +31,7 @@ end
 
 # Set up hierarchical logging using the SCARPE_LOG_CONFIG var for configuration
 log_config = if ENV["SCARPE_LOG_CONFIG"]
-  JSON.load_file(ENV["SCARPE_LOG_CONFIG"])
+               JSON.load_file(ENV["SCARPE_LOG_CONFIG"])
 else
   ENV["SCARPE_DEBUG"] ? Shoes::Log::DEFAULT_DEBUG_LOG_CONFIG : Shoes::Log::DEFAULT_LOG_CONFIG
 end

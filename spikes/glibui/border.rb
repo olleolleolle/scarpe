@@ -7,7 +7,7 @@ class Scarpe
       return styles unless @border_color
 
       border_color = if @border_color.is_a?(Range)
-        { "border-image": "linear-gradient(45deg, #{@border_color.first}, #{@border_color.last}) 1" }
+                       { "border-image": "linear-gradient(45deg, #{@border_color.first}, #{@border_color.last}) 1" }
       else
         { "border-color": @border_color }
       end

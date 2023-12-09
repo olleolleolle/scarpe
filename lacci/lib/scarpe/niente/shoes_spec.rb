@@ -72,7 +72,7 @@ class Niente::ShoesSpecProxy
 
   def method_missing(method, ...)
     if @obj.respond_to?(method)
-      self.singleton_class.define_method(method) do |*args, **kwargs, &block|
+      singleton_class.define_method(method) do |*args, **kwargs, &block|
         @obj.send(method, *args, **kwargs, &block)
       end
       send(method, ...)
